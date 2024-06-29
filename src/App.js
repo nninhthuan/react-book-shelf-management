@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Router } from "react-router-dom";
+import "./App.css";
+import BookDashboard from "./components/BookDashboard";
+import { getAll } from "./BooksAPI";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [getAllBooks, setBooks] = useState([]);
+
+  useEffect(() => {
+    getAll().then((res) => {
+      setBooks(res);
+    });
+  }, []);
+
+
+  const bookCategories = {
+    currently: "Currently Reading",
+    wantToRead: "Want To Read",
+    Read: "Read",
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BookDashboard 
+        bookCategories={bookCategories}
+        allBooks={getAllBooks}
+      />
     </div>
   );
 }
