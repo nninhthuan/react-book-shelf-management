@@ -1,0 +1,26 @@
+.read-status-container {
+  max-width: 20%;
+  border: 1px solid red;
+}
+
+.status-container ul {
+  list-style-type: none;
+  text-align: left;
+  padding: 0;
+}
+.status-container ul li {
+  padding: 5px;
+}
+.default-status-item {
+  cursor: default;
+  background-color: transparent !important;
+  margin-bottom: 8px;
+}
+.default-status-item:hover {
+  cursor: default;
+  background-color: aqua !important;
+}
+
+.is-active-status-item {
+  background-color: aqua !important;
+}

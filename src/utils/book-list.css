@@ -1,0 +1,23 @@
+.book-wrapper {
+  position: relative;
+  height: max-content;
+}
+.book-image {
+  width: fit-content;
+  height: 100%;
+}
+.round-status {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgb(51, 95, 7);
+  position: absolute;
+  top: 80%;
+}
+
+.read-status {
+  width: 100%;
+  /* position: relative;
+  left: 50%;
+  margin-top: -10px; */
+}
