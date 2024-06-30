@@ -1,6 +1,17 @@
+.list-books-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.books-container {
+  display: flex;
+  width: 400px;
+  margin-bottom: 25px;
+}
 .book-wrapper {
-  position: relative;
   height: max-content;
+  width: 150px;
 }
 .book-image {
   width: fit-content;
@@ -11,13 +22,27 @@
   height: 50px;
   border-radius: 50%;
   background-color: rgb(51, 95, 7);
-  position: absolute;
-  top: 80%;
+  margin-top: -40px;
+  position: relative;
+  left: 75%;
 }
 
+.triangle {
+  width: 0;
+  height: 0;
+  border-top: 0px solid transparent;
+  border-right: 20px solid #000;
+  border-bottom: 20px solid transparent;
+  transform: rotate(135deg);
+  position: relative;
+  top: 9px;
+  left: 14px;
+}
+.title-book {
+  width: 150px;
+}
 .read-status {
   width: 100%;
-  /* position: relative;
-  left: 50%;
-  margin-top: -10px; */
+  margin-top: 120px;
+  margin-left: -50px;
 }

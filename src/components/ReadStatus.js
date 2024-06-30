@@ -5,8 +5,8 @@ const ReadStatus = () => {
   const [status, setStatus] = useState({
     "Currently Reading": false,
     "Want To Read": false,
-    Read: false,
-    None: true,
+    "Read": false,
+    "None": true,
   });
 
   return (
