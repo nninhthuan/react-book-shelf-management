@@ -1,6 +1,8 @@
 .read-status-container {
-  max-width: 20%;
-  border: 1px solid red;
+  max-width: 215px;
+  box-shadow: 4px 3px 3px #818F99;
+  border-radius: 5px;
+  background-color: beige;
 }
 
 .status-container ul {
@@ -10,6 +12,10 @@
 }
 .status-container ul li {
   padding: 5px;
+}
+
+.move-to {
+  color: rgb(103, 113, 133);
 }
 .default-status-item {
   cursor: default;

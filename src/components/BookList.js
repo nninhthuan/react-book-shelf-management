@@ -1,18 +1,38 @@
 import ReadStatus from "./ReadStatus";
-import './../utils/book-list.css';
-const BookList = ({books}) => {
+import "./../utils/book-list.css";
+const BookList = (props) => {
   return (
-    <div className="books-container">
-      <div className="book-wrapper">
-        <div className="book-image">
-          <img src="http://books.google.com/books/content?id=1wy49i-gQjIC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"/>
-        </div>
-        <div className="read-status">
-            <div className="round-status"></div>
-            {/* <ReadStatus /> */}
-        </div>
-        <div className="title-book">Hi</div>
-      </div>
+    <div className="list-books-container">
+      {props.book.map((book) => {
+        book.isShowReadStatus = false;
+        book.isShowRoundStatus = true;
+
+        return (
+          <div className="books-container" key={book.title}>
+            <div className="book-wrapper">
+              <div className="book-image">
+                <img src={book.imageLinks.smallThumbnail} />
+                {book.isShowRoundStatus && (
+                  <div
+                    className="round-status"
+                    onClick={() => {
+                      book.isShowReadStatus = true;
+                      book.isShowRoundStatus = false;
+                      props.onShowReadStatus();
+                    }}
+                  >
+                    <div className="triangle"></div>
+                  </div>
+                )}
+              </div>
+              <div className="title-book">{book.title}</div>
+            </div>
+            <div className="read-status">
+              {book.isShowReadStatus && <ReadStatus />}
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };
