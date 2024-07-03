@@ -7,11 +7,13 @@
 .books-container {
   display: flex;
   width: 400px;
+  height: 270px;
   margin-bottom: 25px;
 }
 .book-wrapper {
   height: max-content;
   width: 150px;
+  margin-left: 40%;
 }
 .book-image {
   width: fit-content;

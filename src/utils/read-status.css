@@ -1,8 +1,10 @@
 .read-status-container {
-  max-width: 215px;
+  width: 215px;
   box-shadow: 4px 3px 3px #818F99;
   border-radius: 5px;
   background-color: beige;
+  position: absolute;
+
 }
 
 .status-container ul {
