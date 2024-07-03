@@ -4,9 +4,13 @@ import BookDashboard from "./components/BookDashboard";
 
 function App() {
   const bookCategories = {
-    currently: "Currently Reading",
-    wantToRead: "Want To Read",
-    Read: "Read",
+    currentlyReading: "currentlyReading",
+    wantToRead: "wantToRead",
+    read: "read",
+
+    currentlyTitle: "Currently Reading",
+    wantToReadTitle: "Want To Read",
+    readTitle: "Read",
   };
 
   return (

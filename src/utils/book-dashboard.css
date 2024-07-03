@@ -6,3 +6,14 @@
   color: snow;
   padding: 10px;
 }
+
+.currently-reading-container, .want-to-read-container {
+  width: 90%;
+  border-bottom: 1px solid black;
+  margin-left: 5%;
+}
+
+.completed-read-container {
+  width: 90%;
+  margin-left: 5%;
+}

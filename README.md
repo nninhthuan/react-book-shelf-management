@@ -19,3 +19,5 @@ You may also see any lint errors in the console.
 # Project Introduction
 
 This project called My Read. An application manage books that have different state. It may be **want to read**, **currently read**, **read**. And also user can go through the search page to search or add a desired book to your shelf.
+
+- Application is using React with state management to listen any changes from client to display the right part on the browser
