@@ -42,10 +42,14 @@ const BookDashboard = (props) => {
         book.shelf = shelf;
       }
     });
-    const books = [...allBooks];
 
-    //After setBooks, I expected book will change the shelf
-    setBooks(books);
+    const currentBook = allBooks.filter(book => book.shelf === props.bookCategories.currentlyReading);
+    const wantToRead = allBooks.filter(book => book.shelf === props.bookCategories.wantToRead);
+    const read = allBooks.filter(book => book.shelf === props.bookCategories.read);
+
+    setCurrentlyBook(currentBook);
+    setBookWillRead(wantToRead);
+    setRead(read);
   }
 
   return (
