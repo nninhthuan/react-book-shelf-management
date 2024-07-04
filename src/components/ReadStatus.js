@@ -1,24 +1,40 @@
+import { update } from "../BooksAPI";
 import "./../utils/read-status.css";
 import { useState } from 'react';
 
-const ReadStatus = (props) => {
+const ReadStatus = ({book, onAfterUpdateShelf}) => {
   const [status, setStatus] = useState({
-    "Currently Reading": false,
-    "Want To Read": false,
-    "Read": false,
-    "None": true,
+    "Currently Reading": book.shelf === 'currentlyReading',
+    "Want To Read": book.shelf === 'wantToRead',
+    "Read": book.shelf === 'read',
+    "None": book.shelf === '',
   });
 
   const onClickReadStatus = (item) => {
+    const convertShelf = {
+      'currentlyReading' : 'Currently Reading',
+      'wantToRead': 'Want To Read',
+      'read': 'Read',
+      'none': 'None',
 
-    //Chose proper, item of status can not change value
-    let statusObj = {};
+    }
 
-    Object.keys(status).map(key => {
-      // `${key}` = key === item,
-    });
-    console.log(status)
-    props.onChooseReadStatus(item);
+    Object.keys(convertShelf).forEach(shelf => {
+      if ([convertShelf[shelf]][0] === item) {
+        update(book, shelf);
+        onAfterUpdateShelf(book, shelf);
+      }
+    })
+
+    const currentStatus = {
+      ...status,
+      "Currently Reading": item === "Currently Reading",
+      "Want To Read": item === "Want To Read",
+      "Read": item === "Read",
+      "None": item === "None",
+    };
+    
+    setStatus(currentStatus);
   }
 
   return (
@@ -37,7 +53,7 @@ const ReadStatus = (props) => {
                 }`}
                 onClick={() => onClickReadStatus(item)}
               >
-                {status[`${item}`] ? <>&#x2713;</> : ""} {item}
+                {status[`${item}`] ? <>&#x2713;</> : ""} <span className="status-item">{item}</span>
               </li>
             );
           })}

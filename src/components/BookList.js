@@ -5,9 +5,10 @@ const BookList = (props) => {
     props.onShowReadStatus(book);
   };
 
-  const onChooseReadStatus = (item) => {
-    props.handleAfterGetValueFromReadStatus(item);
-  }
+  const onAfterUpdateShelf = (book, shelf) => {
+    props.handleAfterUpdateShelf(book, shelf);
+  };
+
   return (
     <div className="list-books-container">
       {props.books.map((book) => {
@@ -28,7 +29,7 @@ const BookList = (props) => {
               <div className="title-book">{book.title}</div>
             </div>
             <div className="read-status">
-              {book.isShowReadStatus && <ReadStatus onChooseReadStatus={onChooseReadStatus}/>}
+              {book.isShowReadStatus && <ReadStatus book={book} onAfterUpdateShelf={onAfterUpdateShelf}/>}
             </div>
           </div>
         );

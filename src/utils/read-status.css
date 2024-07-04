@@ -32,3 +32,7 @@
 .is-active-status-item {
   background-color: aqua !important;
 }
+
+.status-item {
+  padding-left: 20px;
+}
