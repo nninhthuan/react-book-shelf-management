@@ -23,7 +23,7 @@ const BookDashboard = (props) => {
       setBookWillRead(wantToRead);
       setRead(read);
     });
-  }, []);
+  }, [props.bookCategories]);
 
   const onShowReadStatus = (book) => {
     allBooks.forEach(item => {
@@ -34,29 +34,34 @@ const BookDashboard = (props) => {
     setBooks(books);
   };
 
-  const handleAfterGetValueFromReadStatus = (item) => {
-    allBooks.forEach(book => {
-      book.isShowReadStatus = false;
-      book.isShowRoundStatus = true;
+  const onChangeAfterUpdateShelf = (book, shelf) => {
+    allBooks.forEach(item => {
+      item.isShowReadStatus = false;
+      item.isShowRoundStatus = true;
+      if (book.title === item.title) {
+        book.shelf = shelf;
+      }
     });
     const books = [...allBooks];
+
+    //After setBooks, I expected book will change the shelf
     setBooks(books);
-    // console.log(item)
-  };
+  }
+
   return (
     <div>
       <header className="header">Book Shelf</header>
       <div className="currently-reading-container">
         <h2>{props.bookCategories.currentlyTitle}</h2>
-        <BookList books={currentlyBook} onShowReadStatus={onShowReadStatus} handleAfterGetValueFromReadStatus={handleAfterGetValueFromReadStatus}/>
+        <BookList books={currentlyBook} onShowReadStatus={onShowReadStatus} handleAfterUpdateShelf={onChangeAfterUpdateShelf}/>
       </div>
       <div className="want-to-read-container">
         <h2>{props.bookCategories.wantToReadTitle}</h2>
-        <BookList books={wantToRead} onShowReadStatus={onShowReadStatus} handleAfterGetValueFromReadStatus={handleAfterGetValueFromReadStatus}/>
+        <BookList books={wantToRead} onShowReadStatus={onShowReadStatus} handleAfterUpdateShelf={onChangeAfterUpdateShelf}/>
       </div>
       <div className="completed-read-container">
         <h2>{props.bookCategories.readTitle}</h2>
-        <BookList books={read} onShowReadStatus={onShowReadStatus} handleAfterGetValueFromReadStatus={handleAfterGetValueFromReadStatus}/>
+        <BookList books={read} onShowReadStatus={onShowReadStatus} handleAfterUpdateShelf={onChangeAfterUpdateShelf}/>
       </div>
     </div>
   );
