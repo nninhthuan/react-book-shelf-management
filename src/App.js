@@ -1,6 +1,7 @@
-import { Route, Router } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import BookDashboard from "./components/BookDashboard";
+import SearchPage from "./components/SearchPage.js";
 
 function App() {
   const bookCategories = {
@@ -15,9 +16,20 @@ function App() {
 
   return (
     <div className="App">
-      <BookDashboard 
-        bookCategories={bookCategories}
-      />
+      <header className="App-header">Book Shelf</header>
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={ <BookDashboard bookCategories={bookCategories}/>}
+        />
+        <Route
+          path="/search"
+          element={ <SearchPage/>}
+        />
+      </Routes>
+      
+      
     </div>
   );
 }

@@ -1,4 +1,4 @@
-.search-page-route {
+.dashboard-page-route {
   display: flex;
   cursor: default;
   position: fixed;
@@ -6,7 +6,7 @@
   font-size: 30px;
   font-weight: 600;
 }
-.move-search-page {
+.move-dashboard-page {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -15,15 +15,4 @@
 
   color: black;
   text-decoration: none;
-}
-
-.currently-reading-container, .want-to-read-container {
-  width: 90%;
-  border-bottom: 1px solid black;
-  margin-left: 5%;
-}
-
-.completed-read-container {
-  width: 90%;
-  margin-left: 5%;
 }
