@@ -2,6 +2,8 @@ import '../utils/book-dashboard.css';
 import BookList from './BookList';
 import { useEffect, useState } from "react";
 import {getAll} from './../BooksAPI'
+import { Link } from 'react-router-dom';
+
 const BookDashboard = (props) => {
   const [allBooks, setBooks] = useState([]);
   const [currentlyBook, setCurrentlyBook] = useState([]);
@@ -54,7 +56,9 @@ const BookDashboard = (props) => {
 
   return (
     <div>
-      <header className="header">Book Shelf</header>
+      <div className="search-page-route">
+        <Link to="/search" className="move-search-page">+</Link>
+      </div>
       <div className="currently-reading-container">
         <h2>{props.bookCategories.currentlyTitle}</h2>
         <BookList books={currentlyBook} onShowReadStatus={onShowReadStatus} handleAfterUpdateShelf={onChangeAfterUpdateShelf}/>
