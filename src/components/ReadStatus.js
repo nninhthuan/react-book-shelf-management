@@ -7,7 +7,7 @@ const ReadStatus = ({book, onAfterUpdateShelf}) => {
     "Currently Reading": book.shelf === 'currentlyReading',
     "Want To Read": book.shelf === 'wantToRead',
     "Read": book.shelf === 'read',
-    "None": book.shelf === '',
+    "None": false,
   });
 
   const onClickReadStatus = (item) => {
@@ -16,7 +16,6 @@ const ReadStatus = ({book, onAfterUpdateShelf}) => {
       'wantToRead': 'Want To Read',
       'read': 'Read',
       'none': 'None',
-
     }
 
     Object.keys(convertShelf).forEach(shelf => {
