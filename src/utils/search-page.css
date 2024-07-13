@@ -1,7 +1,6 @@
 .dashboard-page-route {
   display: flex;
   cursor: default;
-  position: fixed;
   margin: 20px 25px;
   font-size: 15px;
   font-weight: 300;
@@ -15,4 +14,35 @@
 
   color: black;
   text-decoration: none;
+  /* position: fixed; */
+
+}
+
+.search-book-container {
+  width: 100%;
+  margin-left: 10px;
+}
+
+.input-key-search {
+  display: flex;
+  justify-content: center;
+}
+
+.search-input {
+  width: 50%;
+  height: 30px;
+  border-radius: 4px;
+  padding-left: 10px;
+}
+
+.search-icon {
+  width: 20px;
+  height: 20px;
+
+  margin-top: 5px;
+  margin-left: -25px;
+}
+
+.search-book-result {
+  margin-top: 20px;
 }

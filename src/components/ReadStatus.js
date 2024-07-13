@@ -3,6 +3,7 @@ import "./../utils/read-status.css";
 import { useState } from 'react';
 
 const ReadStatus = ({book, onAfterUpdateShelf}) => {
+  console.log(book.shelf)
   const [status, setStatus] = useState({
     "Currently Reading": book.shelf === 'currentlyReading',
     "Want To Read": book.shelf === 'wantToRead',
