@@ -11,9 +11,9 @@ const BookList = (props) => {
 
   return (
     <div className="list-books-container">
-      {props.books.map((book) => {
+      {props.books && props.books.map((book) => {
         return (
-          <div className="books-container" key={book.title}>
+          <div className="books-container" key={book.title + book.subtitle}>
             <div className="book-wrapper">
               <div className="book-image">
                 <img src={book.imageLinks.smallThumbnail} alt={book.description}/>
@@ -26,7 +26,10 @@ const BookList = (props) => {
                   </div>
                 )}
               </div>
-              <div className="title-book">{book.title}</div>
+              <div className="title-book">
+                <p className="title-book-label">{book.title}</p>
+                <p style={{width: '160%', textAlign: 'left'}}><strong>Author: </strong> {book.authors.join(', ')}</p>
+              </div>
             </div>
             <div className="read-status">
               {book.isShowReadStatus && <ReadStatus book={book} onAfterUpdateShelf={onAfterUpdateShelf}/>}

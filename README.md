@@ -22,6 +22,30 @@ This project called My Read. An application manage books that have different sta
 
 - Application is using React with state management to listen any changes from client to display the right part on the browser
 
-# Project Architecture
+# Project Architecture 
+    *from up to down, the number bullets show organising level*
+1. App.js: 
+  + parent file where all custom components is called, set books is show round icon, hide read table status by default.
+  + Organise routing.
 
-- App.js: parent file where all custom components is called
+2. BookDashboard.js
+2. SearchPage.js
+3. BookList.js
+4. ReadStatus.js
+
+# Project Feature
+1. Common Feature Introduction:
+  **1.1.** Show Read Table Status 
+  - After go into your dashboard/ enter key to search. You also see a button like this![alt text](src/assets/btn-show-read-table.png).
+  - API that Udacity provides do not exist a property for display read status, It only appears after clicking on the above button ![alt text](src/assets/read-table-status.png). By default, it will not be clicked on any item. If you chose a shelf and then, when open again this table, it will show a matching item with a shelf you chose before.
+  - Due to non-exits properties. An idea is to create 2 property to show/hide this table/round icon.
+  ```
+    res.forEach(book => {
+          book.isShowReadStatus = false;
+          book.isShowRoundStatus = true;
+        });
+  ```
+2. Dashboard Page
+
+3. Search Page
+- For search page, you don&apos;t need to press enter to display search result. After typing from keyboard, application will trigger an event to automatically send to server to query, receive a matching book(s) and display on search page

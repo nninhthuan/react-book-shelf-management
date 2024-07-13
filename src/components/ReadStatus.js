@@ -3,11 +3,12 @@ import "./../utils/read-status.css";
 import { useState } from 'react';
 
 const ReadStatus = ({book, onAfterUpdateShelf}) => {
+  console.log(book.shelf)
   const [status, setStatus] = useState({
     "Currently Reading": book.shelf === 'currentlyReading',
     "Want To Read": book.shelf === 'wantToRead',
     "Read": book.shelf === 'read',
-    "None": book.shelf === '',
+    "None": false,
   });
 
   const onClickReadStatus = (item) => {
@@ -16,7 +17,6 @@ const ReadStatus = ({book, onAfterUpdateShelf}) => {
       'wantToRead': 'Want To Read',
       'read': 'Read',
       'none': 'None',
-
     }
 
     Object.keys(convertShelf).forEach(shelf => {

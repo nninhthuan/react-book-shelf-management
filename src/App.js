@@ -2,8 +2,11 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import BookDashboard from "./components/BookDashboard";
 import SearchPage from "./components/SearchPage.js";
+// import { useState } from "react";
 
 function App() {
+  // const [allBooks, setBooks] = useState([]);
+  
   const bookCategories = {
     currentlyReading: "currentlyReading",
     wantToRead: "wantToRead",
@@ -21,15 +24,14 @@ function App() {
         <Route
           exact
           path="/"
-          element={ <BookDashboard bookCategories={bookCategories}/>}
+          element={ <BookDashboard bookCategories={bookCategories} />}
         />
         <Route
           path="/search"
-          element={ <SearchPage/>}
+          element={ <SearchPage />}
+          // onSetAllBooks={onSetAllBooks}
         />
       </Routes>
-      
-      
     </div>
   );
 }

@@ -1,7 +1,7 @@
+import { getAll } from '../BooksAPI';
 import '../utils/book-dashboard.css';
 import BookList from './BookList';
 import { useEffect, useState } from "react";
-import {getAll} from './../BooksAPI'
 import { Link } from 'react-router-dom';
 
 const BookDashboard = (props) => {
@@ -9,23 +9,24 @@ const BookDashboard = (props) => {
   const [currentlyBook, setCurrentlyBook] = useState([]);
   const [wantToRead, setBookWillRead] = useState([]);
   const [read, setRead] = useState([]);
-  
+
   useEffect(() => {
     getAll().then((res) => {
-      setBooks(res);
       res.forEach(book => {
         book.isShowReadStatus = false;
         book.isShowRoundStatus = true;
       });
-      const currentBook = res.filter(book => book.shelf === props.bookCategories.currentlyReading);
-      const wantToRead = res.filter(book => book.shelf === props.bookCategories.wantToRead);
-      const read = res.filter(book => book.shelf === props.bookCategories.read);
+      setBooks(res);
 
-      setCurrentlyBook(currentBook);
-      setBookWillRead(wantToRead);
-      setRead(read);
+      const recentBook = res.filter(book => book.shelf === props.bookCategories.currentlyReading);
+      const desiredRead = res.filter(book => book.shelf === props.bookCategories.wantToRead);
+      const haveRead = res.filter(book => book.shelf === props.bookCategories.read);
+
+      setCurrentlyBook(recentBook);
+      setBookWillRead(desiredRead);
+      setRead(haveRead);
     });
-  }, [props.bookCategories]);
+  }, [props]);
 
   const onShowReadStatus = (book) => {
     allBooks.forEach(item => {
@@ -33,7 +34,7 @@ const BookDashboard = (props) => {
       item.isShowRoundStatus = book.title !== item.title;
     });
     const books = [...allBooks];
-    setBooks(books);
+    setBooks(books)
   };
 
   const onChangeAfterUpdateShelf = (book, shelf) => {

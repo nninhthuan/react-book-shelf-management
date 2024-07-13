@@ -8,7 +8,7 @@
   display: flex;
   width: 400px;
   height: 270px;
-  margin-bottom: 25px;
+  margin-bottom: 50px;
 }
 .book-wrapper {
   height: max-content;
@@ -42,6 +42,14 @@
 }
 .title-book {
   width: 150px;
+  color: black;
+}
+
+.title-book-label {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .read-status {
   width: 100%;
