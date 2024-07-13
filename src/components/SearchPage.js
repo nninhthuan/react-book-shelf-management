@@ -2,30 +2,49 @@ import { Link } from "react-router-dom";
 import './../utils/search-page.css';
 import Arrow from './../assets/icon.js';
 import BookList from './BookList';
-import { search } from "../BooksAPI.js";
-import { useState } from "react";
+import { getAll, search } from "../BooksAPI.js";
+import { useEffect, useState } from "react";
 const SearchPage = (props) => {
+  const [booksFromDashboard, setBooks] = useState([])
   const [searchTxt, setSearchTxt] = useState('');
   const [allBooks, setBook] = useState([]);
 
-  const getValueFromInput = ($event) => {
-    setSearchTxt($event.target.value);
+  useEffect(() => {
+    getAll().then((res) => {
+      setBooks(res);
+    });
+  }, [props]);
 
-    if ($event.code === 'Enter') {
-      search(searchTxt, 7).then((books) => {
-        if (books.length) {
-          books && books.forEach(book => {
-            book.isShowReadStatus = false;
-            book.isShowRoundStatus = true;
-          });
-          setBook(books);
-        }
-      });
-    }
+  const getValueFromInput = ($event) => {
+    setBook([]);
+    setSearchTxt($event.target.value);
+    
+    if ($event.target.value === '') return;
+
+    search($event.target.value, 10).then((books) => {
+
+      if (books && books.length && !books.error) {
+        books && books.forEach(book => {
+          book.isShowReadStatus = false;
+          book.isShowRoundStatus = true;
+        });
+        setBook(books);
+      } else {
+        setBook([]);
+      }
+    });
   }
 
   const onShowReadStatus = (book) => {
     allBooks.forEach(item => {
+      item.shelf = 'none';
+
+      booksFromDashboard.forEach(booksFromDashboard => {
+        if (booksFromDashboard.title === book.title) {
+          item.shelf = booksFromDashboard.shelf;
+          return;
+        } 
+      });
       item.isShowReadStatus = book.title === item.title;
       item.isShowRoundStatus = book.title !== item.title;
     });
@@ -62,7 +81,7 @@ const SearchPage = (props) => {
           </div>
         </div>
         <div className="search-book-result">
-          <BookList books={allBooks} onShowReadStatus={onShowReadStatus} handleAfterUpdateShelf={onChangeAfterUpdateShelf}/>
+          {searchTxt && <BookList books={allBooks} onShowReadStatus={onShowReadStatus} handleAfterUpdateShelf={onChangeAfterUpdateShelf}/>}
         </div>
       </div>
     </div>

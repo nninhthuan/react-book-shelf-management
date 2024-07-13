@@ -11,12 +11,12 @@ const BookList = (props) => {
 
   return (
     <div className="list-books-container">
-      {props.books && props.books.map((book) => {
+      {props.books && props.books.length > 0 && props.books.filter(b => b.imageLinks && b.authors && b.categories).map((book) => {
         return (
-          <div className="books-container" key={book.title + book.subtitle}>
+          <div className="books-container" key={book.title + book.authors + book.id}>
             <div className="book-wrapper">
               <div className="book-image">
-                <img src={book.imageLinks.smallThumbnail} alt={book.description}/>
+                <img src={book.imageLinks && book.imageLinks.smallThumbnail} alt={book.description}/>
                 {book.isShowRoundStatus && (
                   <div
                     className="round-status"
@@ -28,7 +28,7 @@ const BookList = (props) => {
               </div>
               <div className="title-book">
                 <p className="title-book-label">{book.title}</p>
-                <p style={{width: '160%', textAlign: 'left'}}><strong>Author: </strong> {book.authors.join(', ')}</p>
+                <p style={{width: '160%', textAlign: 'left'}}><strong>Author: </strong> {book.authors}</p>
               </div>
             </div>
             <div className="read-status">
