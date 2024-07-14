@@ -1,39 +1,53 @@
-# Getting Started with Create React App
+# Project Title
 
-This project was launched with [Create React App](https://github.com/facebook/create-react-app).
+This is all about application [React Book Shelf Management]. It was created using React library.
 
-## Available Scripts
+## Launch Installation
 
 In the project directory, you can run:
-### `npm install`
+1. Clone the repository to your local machine: 
+### `git clone https://github.com/nninhthuan/react-book-shelf-management.git`.
 
-Install any dependencies, necessary library for applicaion
-### `npm start`
+2. Navigate to the project directory:
+### `cd react-book-shelf-management`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+3. Install any dependencies, necessary library for applicaion
+### `npm install` or `yarn install`
+
+4. Start project on the browser.
+### `npm start` or `yarn start`
+
+- Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-# Project Introduction
+## Project Description
 
-This project called My Read. An application manage books that have different state. It may be **want to read**, **currently read**, **read**. And also user can go through the search page to search or add a desired book to your shelf.
+- This project called React Book Shelf Management. An application manages books that have different state. It may be **want to read**, **currently read**, **read**. And also user can go through the search page to search or add a desired book to your shelf.
 
-- Application is using React with state management to listen any changes from client to display the right part on the browser
+- Application is using React with state management to listen any changes from client to display the right part on the browser.
 
-# Project Architecture 
+## Project Architecture 
     *from up to down, the number bullets show organising level*
 1. App.js: 
   + parent file where all custom components is called, set books is show round icon, hide read table status by default.
   + Organise routing.
 
 2. BookDashboard.js
-2. SearchPage.js
-3. BookList.js
-4. ReadStatus.js
+  + List books to corresponding shelf. It allows for users to open an option and move to another shelf (including a exclude shelf)
+  + After moving, React will trigger and update UI
+  + It ensures after refreshing the page, the previous page will remain
 
-# Project Feature
+2. SearchPage.js
+  + After you enter from keyboard, it automatically to find list books matching with the results
+  + Search Page allows you to update the shelf. If a book has been chose before, when open a shelf list, a tick put ahead a shelf
+3. BookList.js
+  + Receiving a book as a props and conduct loop to render each book
+4. ReadStatus.js
+  + Each book will stamp with status, shelf of a book. If book has exist a shelf first, after refresh or open, it still remain the tick for a shelf
+
+## Project Feature
 1. Common Feature Introduction:
   **1.1.** Show Read Table Status 
   - After go into your dashboard/ enter key to search. You also see a button like this![alt text](src/assets/btn-show-read-table.png).
